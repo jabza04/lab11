@@ -1,0 +1,32 @@
+name: flutter_application_3
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+
+  # เพิ่ม Dependencies สำหรับ Lab 11
+  image_picker: ^0.8.9
+  flutter_tflite: ^1.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  # เพิ่ม Assets สำหรับโหลดโมเดลและป้ายชื่อ
+  # ต้องระวังการย่อหน้า (Indentation) ให้ตรงกัน
+  assets:
+    - assets/labels.txt
+    - assets/mobilenet.tflite
+    - assets/mobilenetv2.tflite
