@@ -38,7 +38,7 @@ class _AIObjectDetectorState extends State<AIObjectDetector> {
   Future<void> loadModel() async {
     try {
       String? res = await Tflite.loadModel(
-        // เปลี่ยนชื่อไฟล์เป็น mobilenetv2.tflite
+        // เปลี่ยนชื่อไฟล์เป็น model_unquant.tflite
         model: "assets/mobilenetv2.tflite", 
         labels: "assets/labels.txt",
       );
@@ -81,7 +81,7 @@ class _AIObjectDetectorState extends State<AIObjectDetector> {
       var output = await Tflite.runModelOnImage(
         path: image.path,
         numResults: 3,    // <--- แก้เป็น 3 ตามโจทย์ข้อ 5.2
-        threshold: 0.1,   // ลดเกณฑ์ลงเล็กน้อยเพื่อให้เห็นอันดับรองๆ ได้ง่ายขึ้น
+        threshold: 0.0,   // ลดเกณฑ์ลงเล็กน้อยเพื่อให้เห็นอันดับรองๆ ได้ง่ายขึ้น
         imageMean: 127.5, // คงค่านี้ไว้ตามโจทย์ (ห้ามเปลี่ยนเป็น 0 หรือ 1)
         imageStd: 127.5,
       );
@@ -104,8 +104,8 @@ class _AIObjectDetectorState extends State<AIObjectDetector> {
     return Scaffold(
       appBar: AppBar(
         // เพิ่มไอคอนสายฟ้า ⚡ ตามชื่อโจทย์ Speed Demon
-        title: const Text('AI Detector V2 (Top 3) ⚡'), 
-        backgroundColor: Colors.teal,
+        title: const Text('AI Detector V2 (Top 3) 🤯'), 
+        backgroundColor: const Color.fromARGB(255, 9, 77, 155),
       ),
       body: _loading
           ? const Center(child: CircularProgressIndicator())
@@ -176,7 +176,7 @@ class _AIObjectDetectorState extends State<AIObjectDetector> {
                           heroTag: "cam",
                           onPressed: () => pickImage(ImageSource.camera),
                           tooltip: 'Camera',
-                          backgroundColor: Colors.teal,
+                          backgroundColor: const Color.fromARGB(255, 0, 255, 229),
                           child: const Icon(Icons.camera_alt),
                         ),
                         const SizedBox(width: 20),
@@ -184,7 +184,7 @@ class _AIObjectDetectorState extends State<AIObjectDetector> {
                           heroTag: "gal",
                           onPressed: () => pickImage(ImageSource.gallery),
                           tooltip: 'Gallery',
-                          backgroundColor: Colors.teal,
+                          backgroundColor: const Color.fromARGB(255, 0, 255, 229),
                           child: const Icon(Icons.photo_library),
                         ),
                       ],

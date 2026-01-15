@@ -28,5 +28,5 @@ flutter:
   # ต้องระวังการย่อหน้า (Indentation) ให้ตรงกัน
   assets:
     - assets/labels.txt
-    - assets/mobilenet.tflite
     - assets/mobilenetv2.tflite
+    - assets/model_unquant.tflite
